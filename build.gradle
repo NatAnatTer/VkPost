@@ -3,7 +3,7 @@ plugins {
     id 'java'
     id 'jacoco'
 }
-group 'ru.netology'
+group 'ru.ru.netology'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -11,8 +11,8 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'junit:junit:4.13.1'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10'
+    implementation 'junit:junit:4.13.2'
     //testImplementation 'junit:junit:4.13.2'
     // testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
