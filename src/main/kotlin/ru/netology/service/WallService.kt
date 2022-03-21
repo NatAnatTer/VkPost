@@ -1,27 +1,47 @@
 package ru.netology.service
 
-import ru.netology.data.*
+import ru.netology.data.Post
+import java.util.*
 
-object WallService {
+internal object WallService {
     private var posts = emptyArray<Post>()
+    private var uId = emptyArray<UInt>()
 
-    fun add(post: Post): Post {
-        posts += post
+   internal fun add(post: Post): Post {
+        post.id = setId()
+       posts += post
         return posts.last()
     }
-    fun setId(posts: Post){
 
+  internal  fun printPost() {
+        for (post in posts)
+            println(post)
     }
 
-    fun getLastIdPosts(posts: Array<Post>): Int{
-        val id: Int
-        id = if  (posts.lastIndex == -1) {
-            0
-        } else {
-            posts.lastIndex + 1
-        }
-        return id
+
+
+  private  fun setId(): UInt{
+        var maxRate = uId.maxOrNull()
+
+            if (maxRate == null){
+               maxRate = 1U
+            } else {
+                maxRate += 1U
+            }
+        uId += maxRate
+        return maxRate
     }
+
+
+//    fun getLastIdPosts(posts: Array<Post>): Int {
+//        val id: Int
+//        id = if (posts.lastIndex == -1) {
+//            0
+//        } else {
+//            posts.lastIndex + 1
+//        }
+//        return id
+//    }
 //    println(emptyList<Any>().lastIndex) // -1
 //    val list = listOf("a", "x", "y")
 //    println(list.lastIndex) // 2
