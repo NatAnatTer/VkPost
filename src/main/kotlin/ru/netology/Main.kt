@@ -9,15 +9,15 @@ fun main() {
 
 
     val post1 = Post(
-        id = 0U,
+        //id = 0U,
         ownerId = 1,
         fromId = 2,
         createdBy = 0,
-        date = 1647721489,
+        //date = 1647721489,
         text = "This is my FIRST post. I hope, I can do it better than I think. And so on, bla bla bla.",
         replyOwnerId = 0,
         replyPostId = 0,
-        friendsOnly = true,
+        friendsOnly = false,
         comments = Comment(1, true, true, true, true),
         copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
         likes = Like(1000, true, true, true),
@@ -35,11 +35,11 @@ fun main() {
         postponedId = 1232
     )
     val post2 = Post(
-        0U,
+        //0U,
         1,
         2,
         0,
-        1647721489,
+        //1647721489,
         "This is my SECOND post. I hope, I can do it better than I think. And so on, bla bla bla.",
         0,
         0,
@@ -61,11 +61,11 @@ fun main() {
         1232
     )
     val post3 = Post(
-        0U,
+        //0U,
         1,
         2,
         0,
-        1647721489,
+        //1647721489,
         "This is my ТРЕТИЙ post. I hope, I can do it better than I think. And so on, bla bla bla.",
         0,
         0,
