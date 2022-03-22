@@ -9,11 +9,10 @@ fun main() {
 
 
     val post1 = Post(
-        //id = 0U,
-        ownerId = 1,
+                ownerId = 1,
         fromId = 2,
         createdBy = 0,
-        //date = 1647721489,
+        date = System.currentTimeMillis(),
         text = "This is my FIRST post. I hope, I can do it better than I think. And so on, bla bla bla.",
         replyOwnerId = 0,
         replyPostId = 0,
@@ -35,11 +34,10 @@ fun main() {
         postponedId = 1232
     )
     val post2 = Post(
-        //0U,
         1,
         2,
         0,
-        //1647721489,
+        System.currentTimeMillis(),
         "This is my SECOND post. I hope, I can do it better than I think. And so on, bla bla bla.",
         0,
         0,
@@ -61,12 +59,36 @@ fun main() {
         1232
     )
     val post3 = Post(
-        //0U,
         1,
         2,
         0,
-        //1647721489,
+        System.currentTimeMillis(),
         "This is my ТРЕТИЙ post. I hope, I can do it better than I think. And so on, bla bla bla.",
+        0,
+        0,
+        true,
+        Comment(1, true, true, true, true),
+        Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
+        Like(1000, true, true, true),
+        Repost(100_000_000, true),
+        View(1_000_000_000),
+        typeOfPost,
+        0,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
+        1232
+    )
+    val post4 = Post(
+        5,
+        2,
+        0,
+        System.currentTimeMillis(),
+        "This is my SECOND COOOOPYYYY post. I hope, I can do it better than I think. And so on, bla bla bla.",
         0,
         0,
         true,
@@ -92,5 +114,7 @@ fun main() {
     obj.add(post3)
     obj.printPost()
 
+    obj.update(post2, post4)
 
+    obj.printPost()
 }

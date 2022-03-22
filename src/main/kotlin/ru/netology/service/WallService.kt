@@ -7,7 +7,7 @@ internal object WallService {
     private var uId = emptyArray<UInt>()
 
     internal fun add(post: Post): Post {
-       // post.id = setId()
+        // post.id = setId()
         posts += post
         return posts.last()
     }
@@ -16,12 +16,11 @@ internal object WallService {
         for (post in posts) {
             println("----------------------------------------")
             println("ID POST: ${post.getId()}")
-            println("Date = ${post.getCurrentDate()}")
             println(post)
         }
     }
 
-     fun setId(): UInt {
+    fun setId(): UInt {
         var maxRate = uId.maxOrNull()
 
         if (maxRate == null) {
@@ -33,24 +32,43 @@ internal object WallService {
         return maxRate
     }
 
-    internal fun updtate(updatingPost: Post): Boolean {
+    internal fun update(updatingPost: Post, newPost: Post): Boolean {
+        for ((index, changeablePost) in posts.withIndex()) {
+            if (changeablePost.getId() == updatingPost.getId()) {
+                posts[index] = posts[index].copy(
+                    fromId = newPost.fromId,
+                    createdBy = newPost.createdBy,
+                    text = newPost.text,
+                    replyOwnerId = newPost.replyOwnerId,
+                    replyPostId = newPost.replyPostId,
+                    friendsOnly = newPost.friendsOnly,
+                    comments = newPost.comments,
+                    copyright = newPost.copyright,
+                    likes = newPost.likes,
+                    repost = newPost.repost,
+                    views = newPost.views,
+                    postType = newPost.postType,
+                    canPin = newPost.canPin,
+                    canDelete = newPost.canDelete,
+                    canEdit = newPost.canEdit,
+                    isPinned = newPost.isPinned,
+                    markedAsAds = newPost.markedAsAds,
+                    isFavorite = newPost.isFavorite,
+                    donut = newPost.donut,
+                    postponedId = newPost.postponedId
+                )
 
-
-        for (post in posts) {
-            if (post.getId() == updatingPost.getId()) {
-
-               // posts += updatingPost.copy()
                 return true
             }
         }
+
+        println("false")
         return false
     }
 
-//    fun copyPost(updatingPost: Post): Post {
-//        val result = updatingPost // there's no 'new' keyword in Kotlin
-//        result.id = address.name // accessors are called
-//        result.street = address.street
-//        // ...
-//        return result
-//    }
+
 }
+
+
+
+
