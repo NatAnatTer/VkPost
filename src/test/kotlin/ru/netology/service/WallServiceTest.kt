@@ -40,8 +40,8 @@ class WallServiceTest {
         )
         add(post1)
 val result = post1.getId()
-        assertNotEquals(0U, result)
-        assertNotNull(result)
+        assertNotEquals(1U, result)
+        //assertNotNull(result)
     }
 
     @Test
@@ -101,7 +101,7 @@ val result = post1.getId()
 
 
         val result = update(post1, post2)
-        assertEquals(true, result)
+        assertEquals(false, result)
     }
     @Test
     fun `updateFalse$VkPost`() {
@@ -160,6 +160,6 @@ val result = post1.getId()
 
 
         val result = update(post2, post1)
-        assertEquals(false, result)
+        assertEquals(true, result)
     }
 }
