@@ -5,13 +5,7 @@ import ru.netology.data.Post
 internal object WallService {
     private var posts = emptyArray<Post>()
 
-  //  var reposts = emptyArray<Post?>()
-
     private var uId = emptyArray<UInt>()
-
-//    internal fun getRepost(): Array<Post?> {
-//        return reposts
-//    }
 
     internal fun add(post: Post): Post {
         posts += post
@@ -54,6 +48,7 @@ internal object WallService {
                     repost = newPost.repost,
                     views = newPost.views,
                     postType = newPost.postType,
+                    copyHistory = addCopyHistory(newPost),
                     canPin = newPost.canPin,
                     canDelete = newPost.canDelete,
                     canEdit = newPost.canEdit,
@@ -62,6 +57,7 @@ internal object WallService {
                     isFavorite = newPost.isFavorite,
                     donut = newPost.donut,
                     postponedId = newPost.postponedId
+
                 )
 
                 return true
@@ -71,6 +67,13 @@ internal object WallService {
         println("false")
         return false
     }
+
+   private fun addCopyHistory(post: Post): Array<Post>? {
+        post.copyHistory = post.copyHistory?.plus(post)
+       return post.copyHistory
+    }
+
+
 
 
 }

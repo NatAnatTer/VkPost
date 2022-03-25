@@ -1,0 +1,71 @@
+[33mcommit b62320ccdd16305ae4afa13f5a35c04b0fd91203[m[33m ([m[1;36mHEAD -> [m[1;32mfirstTask[m[33m)[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Sat Mar 26 00:31:37 2022 +0300
+
+    first task copyHistory
+
+[33mcommit 394f7015b3501589f0157f8cd4322f0a36a7a7a3[m[33m ([m[1;31morigin/firstTask[m[33m)[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Fri Mar 25 00:49:03 2022 +0300
+
+    first task. add new field
+
+[33mcommit f65e128619222293346d534bd3b534f14dd8b3c9[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Thu Mar 24 22:40:01 2022 +0300
+
+    pass test, after this commit start new HomeWork
+
+[33mcommit d84c8099239949e17ce30ded00c4cd7a1f9a9000[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Thu Mar 24 22:38:20 2022 +0300
+
+    failed test
+
+[33mcommit 42ce17a0e27fcabaa914f822dab2a340e92aa4d1[m
+Author: NatAnatTer <94996701+NatAnatTer@users.noreply.github.com>
+Date:   Wed Mar 23 01:42:54 2022 +0300
+
+    edit ci
+
+[33mcommit e8a7f8887d1afdb50018939064ade68f4d95e404[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Wed Mar 23 01:39:53 2022 +0300
+
+    add tests
+
+[33mcommit 422e8198e3f1a7f1902851c85e14a6e093ab3cd5[m
+Author: NatAnatTer <94996701+NatAnatTer@users.noreply.github.com>
+Date:   Wed Mar 23 01:01:58 2022 +0300
+
+    ci
+
+[33mcommit 30e6eae292c3c6ff4cf3c855ce8cfea421d1c58e[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Wed Mar 23 00:56:26 2022 +0300
+
+    add updating post
+
+[33mcommit 33c60c1ae889e693a1c35e926a02150c6a8a2285[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Tue Mar 22 13:55:33 2022 +0300
+
+    private ID and DateTime
+
+[33mcommit 9ab52da75632ed43b4391e773fb2428ac5ff0d1d[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Mon Mar 21 14:31:37 2022 +0300
+
+    Create post
+
+[33mcommit ac12686ccedc4b726418cde48d3c2780c5d6a563[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Sun Mar 20 00:04:24 2022 +0300
+
+    Create first post
+
+[33mcommit c55563d3c16d0d5cb4c804b257abeb964566258e[m
+Author: Natalia <natinho@yandex.ru>
+Date:   Tue Mar 15 22:50:11 2022 +0300
+
+    Init commit
