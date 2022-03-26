@@ -1,5 +1,6 @@
 package ru.netology.data
 
+import ru.netology.attachments.Attachments
 import ru.netology.service.WallService
 
 data class Post(
@@ -20,8 +21,8 @@ data class Post(
     val postSource: Source, //Описывает способ размещения записи на стене
     val geo: Geo?, //Информация о местоположении
     var copyHistory: Array<Post>?,//Массив, содержащий историю репостов для записи. Возвращается только в том случае, если запись является репостом. Каждый из объектов массива, в свою очередь, является объектом-записью стандартного формата.
-//val attachments: Attachments
-     val signerId: Int, //Идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем;
+    var attachments: Array<Attachments>?, //Массив вложений
+    val signerId: Int, //Идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем;
     val canPin: Boolean, //Информация о том, может ли текущий пользователь закрепить запись (true — может, false — не может).
     val canDelete: Boolean, //Информация о том, может ли текущий пользователь удалить запись (true — может, false — не может).
     val canEdit: Boolean, //Информация о том, может ли текущий пользователь редактировать запись (true — может, false — не может).

@@ -1,5 +1,6 @@
 package ru.netology.service
 
+import ru.netology.attachments.Attachments
 import ru.netology.data.Post
 
 internal object WallService {
@@ -72,7 +73,10 @@ internal object WallService {
         post.copyHistory = post.copyHistory?.plus(post)
        return post.copyHistory
     }
-
+private fun addAttachment(post: Post, attachment: Attachments): Array<Attachments>? {
+    post.attachments = post.attachments?.plus(attachment)
+    return post.attachments
+}
 
 
 
