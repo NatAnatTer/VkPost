@@ -1,21 +1,22 @@
 package ru.netology.attachments
 
+// Объект, описывающий файл
 
-class FileAttachment() : Attachments {
+class FileAttachment(
+    val id: Int, // Идентификатор файла.
+    val ownerId: Int, // Идентификатор пользователя, загрузившего файл.
+    val title: String, // Название файла.
+    val size: Int, // Размер файла в байтах.
+    val ext: String, // Расширение файла.
+    val url: String, // Адрес файла, по которому его можно загрузить.
+    val date: Int, // Дата добавления в формате Unixtime.
+    val type: Int, //Тип файла.
+    val preview: Preview  //Информация для предварительного просмотра файла.
+) : Attachments {
     override val typeOfAttachments: String
         get() = "File"
-
-    // Объект, описывающий файл
-    val id: Int = 0 // Идентификатор файла.
-    val ownerId: Int = 0 // Идентификатор пользователя, загрузившего файл.
-    val title: String = "" // Название файла.
-    val size: Int = 0 // Размер файла в байтах.
-    val ext: String = "" // Расширение файла.
-    val url: String = "" // Адрес файла, по которому его можно загрузить.
-    val date: Int = 0 // Дата добавления в формате Unixtime.
-    val type: Int = 0 //Тип файла.  Возможные значения:
-
     /**
+     * Тип файла.  Возможные значения:
     1 — текстовые документы;
     2 — архивы;
     3 — gif;
@@ -25,8 +26,4 @@ class FileAttachment() : Attachments {
     7 — электронные книги;
     8 — неизвестно.
      */
-    val preview: Preview  //Информация для предварительного просмотра файла.
-    get() = preview
-
-
-}
+  }
