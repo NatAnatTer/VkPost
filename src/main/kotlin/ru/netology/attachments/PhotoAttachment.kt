@@ -10,7 +10,20 @@ class PhotoAttachment(
     val sizes: Array<Sizes>, // Массив с копиями изображения в разных размерах. Каждый объект массива содержит следующие поля:
     val width: Int, // Ширина оригинала фотографии в пикселах.
     val height: Int, // Высота оригинала фотографии в пикселах.
+    override val typeOfAttachments: String = "Photo"
 ) : Attachments {
-    override val typeOfAttachments: String
-        get() = "Photo"
+    //override val typeOfAttachments: String
+    //  get() = "Photo"
+
+    override fun toString(): String {
+        return ("id = $id" + "\n" +
+        "albumId = $albumId" + "\n" +
+        "ownerId = $ownerId" + "\n" +
+        "userId = $userId" + "\n" +
+        "text = $text" + "\n" +
+        "date = $date" + "\n" +
+        "sizes = $sizes" + "\n" +
+        "width = $width" + "\n" +
+        "height = $height")
+    }
 }

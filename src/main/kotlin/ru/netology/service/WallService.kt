@@ -3,6 +3,7 @@ package ru.netology.service
 import ru.netology.attachments.Attachments
 import ru.netology.data.Post
 
+
 internal object WallService {
     private var posts = emptyArray<Post>()
 
@@ -69,17 +70,23 @@ internal object WallService {
         return false
     }
 
-   private fun addCopyHistory(post: Post): Array<Post>? {
+    private fun addCopyHistory(post: Post): Array<Post>? {
         post.copyHistory = post.copyHistory?.plus(post)
-       return post.copyHistory
+        return post.copyHistory
     }
-private fun addAttachment(post: Post, attachment: Attachments): Array<Attachments>? {
-    post.attachments = post.attachments?.plus(attachment)
-    return post.attachments
-}
 
-
-
+//    fun addAttachment(post: Post, attachment: Attachments): Array<Attachments?> {
+//        post.attachments += attachment
+//
+//        // (post.attachments?.plus(attachment)?:attachment) as Array<Attachments>?
+//        return post.attachments
+//    }
+//    fun createAttachment(attachment: Attachments): Array<Attachments?> {
+//        val firstAttachment = arrayOf(attachment?)
+//
+//        // (post.attachments?.plus(attachment)?:attachment) as Array<Attachments>?
+//        return firstAttachment
+//    }
 }
 
 

@@ -1,6 +1,7 @@
 package ru.netology.data
 
 import ru.netology.attachments.Attachments
+import ru.netology.attachments.PhotoAttachment
 import ru.netology.service.WallService
 
 data class Post(
@@ -21,7 +22,7 @@ data class Post(
     val postSource: Source, //Описывает способ размещения записи на стене
     val geo: Geo?, //Информация о местоположении
     var copyHistory: Array<Post>?,//Массив, содержащий историю репостов для записи. Возвращается только в том случае, если запись является репостом. Каждый из объектов массива, в свою очередь, является объектом-записью стандартного формата.
-    var attachments: Array<Attachments>?, //Массив вложений
+    var attachments: Array<Attachments>?,
     val signerId: Int, //Идентификатор автора, если запись была опубликована от имени сообщества и подписана пользователем;
     val canPin: Boolean, //Информация о том, может ли текущий пользователь закрепить запись (true — может, false — не может).
     val canDelete: Boolean, //Информация о том, может ли текущий пользователь удалить запись (true — может, false — не может).
@@ -33,10 +34,28 @@ data class Post(
     val postponedId: Int //Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере.
 ) {
 
+
     private val id: UInt = WallService.setId() //Идентификатор записи
     fun getId(): UInt {
         return id
     }
+
+    fun setAttachment(attachment: Array<Attachments>){
+       //this.attachments += if(this.attachments == null) plus(attachment) else this.attachments = attachment
+        this.attachments = this.attachments?.plus(attachment)?: attachment as Array<Attachments>?
+    }
+//    var attachments = emptyArray<Attachments?>() //Массив вложений
+//    fun setAttachment(attachment: Attachments){
+//       this.attachments += attachment
+//        for (i in this.attachments){
+//println(i.toString())
+//        }
+//
+//    }
+
+//    override fun toString(): String{
+//        return (super.toString() + "attachments + $attachments")
+//    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
