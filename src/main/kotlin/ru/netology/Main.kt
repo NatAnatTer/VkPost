@@ -1,8 +1,6 @@
 package ru.netology
 
-import ru.netology.attachments.Attachments
-import ru.netology.attachments.PhotoAttachment
-import ru.netology.attachments.Sizes
+import ru.netology.attachments.*
 import ru.netology.data.*
 import ru.netology.service.WallService
 
@@ -13,8 +11,11 @@ fun main() {
    val obj = WallService
    // val attachment: Attachments = PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234)
   //  println(attachment)
-    val attachment: Array<Attachments> = arrayOf(PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234))
-//    println(attachment)
+    val attachment: Array<Attachments> = arrayOf(PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234),
+            PhotoAttachment(2,1,5, 10,"MySecond symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234),
+   FileAttachment(1, 2, "Title 1 file", 256,"pdf", "http://file_store.ru", 72634628, 1, PhotoSize(arrayOf(Sizes("https://rhoto_preview", 123, 243, "some type"))))
+    )
+
     val post1 = Post(
                 ownerId = 1,
         fromId = 2,
@@ -44,7 +45,10 @@ fun main() {
         donut = Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
         postponedId = 1232
     )
-    post1.setAttachment(attachment)
+   // post1.setAttachment(attachment)
+
+
+
     val post2 = Post(
         1,
         2,
@@ -63,7 +67,7 @@ fun main() {
          Source("vk", "android", "profile_activity", "https://source1234source"),
          null,
          null,
-        attachment,
+        null,
         0,
         true,
         true,
@@ -92,7 +96,7 @@ fun main() {
         Source("vk", "android", "profile_activity", "https://source1234source"),
         null,
         null,
-        attachment,
+        null,
         0,
         true,
         true,
@@ -121,7 +125,7 @@ fun main() {
         Source("vk", "android", "profile_activity", "https://source1234source"),
         null,
         null,
-        attachment,
+        null,
         0,
         true,
         true,
@@ -134,11 +138,11 @@ fun main() {
     )
 
     obj.add(post1)
-    //obj.add(post2)
-    //obj.add(post3)
-    obj.printPost()
+    obj.add(post2)
+    obj.add(post3)
+   // obj.printPost()
 
-    //obj.update(post2, post4)
+    obj.update(post1, post4)
 
    // obj.printPost()
 //val attachment: Attachments = PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234)

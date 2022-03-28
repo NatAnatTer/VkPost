@@ -1,6 +1,5 @@
 package ru.netology.service
 
-import ru.netology.attachments.Attachments
 import ru.netology.data.Post
 
 
@@ -23,7 +22,7 @@ internal object WallService {
     }
 
     fun setId(): UInt {
-        var maxRate = uId.maxOrNull()
+        var maxRate: UInt? = uId.maxOrNull()
 
         if (maxRate == null) {
             maxRate = 1U
@@ -31,8 +30,12 @@ internal object WallService {
             maxRate += 1U
         }
         uId += maxRate
-        return maxRate
+
+        return maxRate.toUInt()
+
+
     }
+
 
     internal fun update(updatingPost: Post, newPost: Post): Boolean {
         for ((index, changeablePost) in posts.withIndex()) {
@@ -50,7 +53,6 @@ internal object WallService {
                     repost = newPost.repost,
                     views = newPost.views,
                     postType = newPost.postType,
-                    copyHistory = addCopyHistory(newPost),
                     canPin = newPost.canPin,
                     canDelete = newPost.canDelete,
                     canEdit = newPost.canEdit,
@@ -58,10 +60,10 @@ internal object WallService {
                     markedAsAds = newPost.markedAsAds,
                     isFavorite = newPost.isFavorite,
                     donut = newPost.donut,
-                    postponedId = newPost.postponedId
-
+                    postponedId = newPost.postponedId,
+                    geo = newPost.geo
                 )
-
+                println("true")
                 return true
             }
         }
@@ -70,25 +72,13 @@ internal object WallService {
         return false
     }
 
-    private fun addCopyHistory(post: Post): Array<Post>? {
-        post.copyHistory = post.copyHistory?.plus(post)
-        return post.copyHistory
+    private fun addCopyHistory(repost: Post, post: Array<Post>): Array<Post>? {
+        repost.copyHistory = repost.copyHistory?.plus(post) ?: post
+        return repost.copyHistory
     }
 
-//    fun addAttachment(post: Post, attachment: Attachments): Array<Attachments?> {
-//        post.attachments += attachment
-//
-//        // (post.attachments?.plus(attachment)?:attachment) as Array<Attachments>?
-//        return post.attachments
-//    }
-//    fun createAttachment(attachment: Attachments): Array<Attachments?> {
-//        val firstAttachment = arrayOf(attachment?)
-//
-//        // (post.attachments?.plus(attachment)?:attachment) as Array<Attachments>?
-//        return firstAttachment
-//    }
-}
 
+}
 
 
 

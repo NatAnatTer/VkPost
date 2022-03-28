@@ -16,14 +16,15 @@ class PhotoAttachment(
     //  get() = "Photo"
 
     override fun toString(): String {
-        return ("id = $id" + "\n" +
-        "albumId = $albumId" + "\n" +
-        "ownerId = $ownerId" + "\n" +
-        "userId = $userId" + "\n" +
-        "text = $text" + "\n" +
-        "date = $date" + "\n" +
-        "sizes = $sizes" + "\n" +
-        "width = $width" + "\n" +
-        "height = $height")
+        return ("typeOfAttachments = $typeOfAttachments" + "\n" +
+                "id = $id" + "\n" +
+                "albumId = $albumId" + "\n" +
+                "ownerId = $ownerId" + "\n" +
+                "userId = $userId" + "\n" +
+                "text = $text" + "\n" +
+                "date = $date" + "\n" +
+                "sizes = $sizes" + "\n" +
+                "width = $width" + "\n" +
+                "height = $height" + "\n")
     }
 }

@@ -15,6 +15,20 @@ class FileAttachment(
 ) : Attachments {
     override val typeOfAttachments: String
         get() = "File"
+
+    override fun toString(): String {
+        return ("typeOfAttachments = $typeOfAttachments" +"\n" +
+                "id = $id" + "\n" +
+                "ownerId = $ownerId" + "\n" +
+                "title = $title" + "\n" +
+                "size = $size" + "\n" +
+                "ext = $ext" + "\n" +
+                "url = $url" + "\n" +
+                "date = $date" + "\n" +
+                "type = $type" + "\n" +
+                "preview = $preview" + "\n"
+                )
+    }
     /**
      * Тип файла.  Возможные значения:
     1 — текстовые документы;
@@ -26,4 +40,4 @@ class FileAttachment(
     7 — электронные книги;
     8 — неизвестно.
      */
-  }
+}

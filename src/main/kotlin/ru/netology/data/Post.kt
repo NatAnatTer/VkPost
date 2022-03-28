@@ -31,7 +31,8 @@ data class Post(
     val markedAsAds: Boolean, //Информация о том, содержит ли запись отметку «реклама» (true — да, false — нет).
     val isFavorite: Boolean, //true, если объект добавлен в закладки у текущего пользователя.
     val donut: Donut, //Информация о записи VK Donut
-    val postponedId: Int //Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере.
+    val postponedId: Int, //Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере.
+
 ) {
 
 
@@ -41,21 +42,9 @@ data class Post(
     }
 
     fun setAttachment(attachment: Array<Attachments>){
-       //this.attachments += if(this.attachments == null) plus(attachment) else this.attachments = attachment
-        this.attachments = this.attachments?.plus(attachment)?: attachment as Array<Attachments>?
+        this.attachments = this.attachments?.plus(attachment)?: attachment
     }
-//    var attachments = emptyArray<Attachments?>() //Массив вложений
-//    fun setAttachment(attachment: Attachments){
-//       this.attachments += attachment
-//        for (i in this.attachments){
-//println(i.toString())
-//        }
-//
-//    }
 
-//    override fun toString(): String{
-//        return (super.toString() + "attachments + $attachments")
-//    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
