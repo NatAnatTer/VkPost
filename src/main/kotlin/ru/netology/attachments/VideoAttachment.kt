@@ -2,7 +2,7 @@ package ru.netology.attachments
 
 import ru.netology.data.Like
 
-class VideoAttachment(
+data class VideoAttachment(
     val id: Int, // Идентификатор видеозаписи.
     val ownerId: Int, // Идентификатор владельца видеозаписи.
     val title: String, // Название видеозаписи.
@@ -49,17 +49,114 @@ class VideoAttachment(
     override val typeOfAttachments: String
         get() = "Video"
 
-    class Image {
-        val height: Int = 0 //высота изображения.
-        val url: String = "" // ссылка на изображение.
-        val width: Int = 0//цирина изображение.
-        val withPadding: Int = 1 // поле возвращается, если изображение с отбивкой, всегда содержит 1.
+    data class Image(
+        val height: Int, //высота изображения.
+        val url: String, // ссылка на изображение.
+        val width: Int,//цирина изображение.
+        val withPadding: Int // поле возвращается, если изображение с отбивкой, всегда содержит 1.
+    )
+
+    data class RepostVideo(
+        val count: Int, // счетчик общего количества репостов. Содержит сумму репостов на стену и в личные сообщения.
+        val wallCount: Int, // счетчик репостов на стену.
+        val mailCount: Int, // счетчик репостов в личные сообщения.
+        val userReposted: Int //информация о том, сделал ли текущий пользователь репост этого видео.
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as VideoAttachment
+
+        if (id != other.id) return false
+        if (ownerId != other.ownerId) return false
+        if (title != other.title) return false
+        if (description != other.description) return false
+        if (duration != other.duration) return false
+        if (!image.contentEquals(other.image)) return false
+        if (!firstFrame.contentEquals(other.firstFrame)) return false
+        if (date != other.date) return false
+        if (addingDate != other.addingDate) return false
+        if (views != other.views) return false
+        if (localViews != other.localViews) return false
+        if (comments != other.comments) return false
+        if (player != other.player) return false
+        if (platform != other.platform) return false
+        if (canAdd != other.canAdd) return false
+        if (isPrivate != other.isPrivate) return false
+        if (accessKey != other.accessKey) return false
+        if (processing != other.processing) return false
+        if (isFavorite != other.isFavorite) return false
+        if (canComment != other.canComment) return false
+        if (canEdit != other.canEdit) return false
+        if (canLike != other.canLike) return false
+        if (canRepost != other.canRepost) return false
+        if (canSubscribe != other.canSubscribe) return false
+        if (canAddToFaves != other.canAddToFaves) return false
+        if (canAttachLink != other.canAttachLink) return false
+        if (width != other.width) return false
+        if (height != other.height) return false
+        if (userId != other.userId) return false
+        if (converting != other.converting) return false
+        if (added != other.added) return false
+        if (isSubscribed != other.isSubscribed) return false
+        if (repeat != other.repeat) return false
+        if (type != other.type) return false
+        if (balance != other.balance) return false
+        if (liveStatus != other.liveStatus) return false
+        if (live != other.live) return false
+        if (upcoming != other.upcoming) return false
+        if (spectators != other.spectators) return false
+        if (likes != other.likes) return false
+        if (reposts != other.reposts) return false
+
+        return true
     }
 
-    class RepostVideo {
-        val count: Int = 0 // счетчик общего количества репостов. Содержит сумму репостов на стену и в личные сообщения.
-        val wallCount: Int = 0 // счетчик репостов на стену.
-        val mailCount: Int = 0 // счетчик репостов в личные сообщения.
-        val userReposted: Int = 0 //информация о том, сделал ли текущий пользователь репост этого видео.
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + ownerId
+        result = 31 * result + title.hashCode()
+        result = 31 * result + description.hashCode()
+        result = 31 * result + duration
+        result = 31 * result + image.contentHashCode()
+        result = 31 * result + firstFrame.contentHashCode()
+        result = 31 * result + date
+        result = 31 * result + addingDate
+        result = 31 * result + views
+        result = 31 * result + localViews
+        result = 31 * result + comments
+        result = 31 * result + player.hashCode()
+        result = 31 * result + platform.hashCode()
+        result = 31 * result + canAdd.hashCode()
+        result = 31 * result + isPrivate
+        result = 31 * result + accessKey.hashCode()
+        result = 31 * result + processing
+        result = 31 * result + isFavorite.hashCode()
+        result = 31 * result + canComment.hashCode()
+        result = 31 * result + canEdit.hashCode()
+        result = 31 * result + canLike.hashCode()
+        result = 31 * result + canRepost.hashCode()
+        result = 31 * result + canSubscribe.hashCode()
+        result = 31 * result + canAddToFaves.hashCode()
+        result = 31 * result + canAttachLink.hashCode()
+        result = 31 * result + width
+        result = 31 * result + height
+        result = 31 * result + userId
+        result = 31 * result + converting.hashCode()
+        result = 31 * result + added.hashCode()
+        result = 31 * result + isSubscribed
+        result = 31 * result + repeat
+        result = 31 * result + type.hashCode()
+        result = 31 * result + balance
+        result = 31 * result + liveStatus.hashCode()
+        result = 31 * result + live
+        result = 31 * result + upcoming
+        result = 31 * result + spectators
+        result = 31 * result + likes.hashCode()
+        result = 31 * result + reposts.hashCode()
+        return result
     }
+
 }

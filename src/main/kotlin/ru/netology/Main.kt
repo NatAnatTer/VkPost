@@ -8,16 +8,73 @@ import ru.netology.service.WallService
 fun main() {
     val typeOfPost = TypeOfPost.POST
 
-   val obj = WallService
-   // val attachment: Attachments = PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234)
-  //  println(attachment)
-    val attachment: Array<Attachments> = arrayOf(PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234),
-            PhotoAttachment(2,1,5, 10,"MySecond symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234),
-   FileAttachment(1, 2, "Title 1 file", 256,"pdf", "http://file_store.ru", 72634628, 1, PhotoSize(arrayOf(Sizes("https://rhoto_preview", 123, 243, "some type"))))
+    val obj = WallService
+
+    val attachment: Array<Attachments> = arrayOf(
+        PhotoAttachment(
+            1,
+            1,
+            5,
+            10,
+            "Myfirst symphony",
+            123213,
+            arrayOf(Sizes("http://my_album", 123, 234, "photo")),
+            123,
+            234
+        ),
+        AudioAttachment(
+            1,
+            3,
+            "First artist",
+            "First song",
+            14678,
+            "http://first_song",
+            null,
+            null,
+            30,
+            2343424,
+            true,
+            true
+        ),
+        FileAttachment(
+            1,
+            2,
+            "Title 1 file",
+            256,
+            "pdf",
+            "http://file_store.ru",
+            72634628,
+            1,
+            PhotoSize(arrayOf(Sizes("https://rhoto_preview", 123, 243, "some type")))
+        ),
+        LinkAttachment(
+            "http://link_first_link",
+            "this link is link",
+            null,
+            "description this link",
+            null,
+            LinkAttachment.Product(LinkAttachment.Price(10, LinkAttachment.Currency(1232, "Ru"), "something")),
+            LinkAttachment.Button("thisButton", LinkAttachment.Actions("radio_button")),
+            "owner_id_page_id",
+            "http://preview.ru"
+        ),
+        NoteAttachment(
+            45,
+            32,
+            "thisNote",
+            "there is text of note",
+            2342342,
+            5,
+            2,
+            "http://firstNote.ru",
+            "property of privacy",
+            true,
+            "#linkOn WiKi"
+        )
     )
 
     val post1 = Post(
-                ownerId = 1,
+        ownerId = 1,
         fromId = 2,
         createdBy = 0,
         date = System.currentTimeMillis(),
@@ -32,9 +89,9 @@ fun main() {
         views = View(1_000_000_000),
         postType = typeOfPost,
         postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
-                geo = null,
+        geo = null,
         copyHistory = null,
-        attachments = attachment,
+        attachments = null,
         signerId = 0,
         canPin = true,
         canDelete = true,
@@ -45,9 +102,6 @@ fun main() {
         donut = Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
         postponedId = 1232
     )
-   // post1.setAttachment(attachment)
-
-
 
     val post2 = Post(
         1,
@@ -64,9 +118,9 @@ fun main() {
         Repost(100_000_000, true),
         View(1_000_000_000),
         typeOfPost,
-         Source("vk", "android", "profile_activity", "https://source1234source"),
-         null,
-         null,
+        Source("vk", "android", "profile_activity", "https://source1234source"),
+        null,
+        null,
         null,
         0,
         true,
@@ -140,14 +194,14 @@ fun main() {
     obj.add(post1)
     obj.add(post2)
     obj.add(post3)
-   // obj.printPost()
 
-    obj.update(post1, post4)
+    obj.printPost()
 
-   // obj.printPost()
-//val attachment: Attachments = PhotoAttachment(1,1,5, 10,"Myfirst symphony", 123213, arrayOf(Sizes("http://my_album", 123, 234,"photo")),123,234)
-//    println(attachment)
-    //obj.addAttachment(post1,attachment)
+    val copyHistory = arrayOf(post2, post3)
+    obj.addCopyHistory(post1, copyHistory)
+    
+    obj.addAttachment(attachment, post1)
+    // obj.update(post1, post4)
     obj.printPost()
 
 

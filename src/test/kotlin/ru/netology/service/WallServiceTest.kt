@@ -31,6 +31,7 @@ class WallServiceTest {
             postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
             geo = null,
             copyHistory = null,
+            attachments = null,
             signerId = 0,
             canPin = true,
             canDelete = true,
@@ -50,6 +51,7 @@ val result = post1.getId()
     @Test
     fun `update$VkPost`() {
         val typeOfPost = TypeOfPost.POST
+
         val post1 = Post(
             ownerId = 1,
             fromId = 2,
@@ -68,6 +70,7 @@ val result = post1.getId()
             postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
             geo = null,
             copyHistory = null,
+            attachments = null,
             signerId = 0,
             canPin = true,
             canDelete = true,
@@ -94,6 +97,7 @@ val result = post1.getId()
             View(1_000_000_000),
             typeOfPost,
             Source("vk", "android", "profile_activity", "https://source1234source"),
+            null,
             null,
             null,
             0,
@@ -133,6 +137,7 @@ val result = post1.getId()
             postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
             geo = null,
             copyHistory = null,
+            attachments = null,
             signerId = 0,
             canPin = true,
             canDelete = true,
@@ -159,6 +164,7 @@ val result = post1.getId()
             View(1_000_000_000),
             typeOfPost,
             Source("vk", "android", "profile_activity", "https://source1234source"),
+            null,
             null,
             null,
             0,

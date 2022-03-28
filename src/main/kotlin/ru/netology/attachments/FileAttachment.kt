@@ -2,7 +2,7 @@ package ru.netology.attachments
 
 // Объект, описывающий файл
 
-class FileAttachment(
+data class FileAttachment(
     val id: Int, // Идентификатор файла.
     val ownerId: Int, // Идентификатор пользователя, загрузившего файл.
     val title: String, // Название файла.
@@ -16,8 +16,9 @@ class FileAttachment(
     override val typeOfAttachments: String
         get() = "File"
 
+
     override fun toString(): String {
-        return ("typeOfAttachments = $typeOfAttachments" +"\n" +
+        return ("typeOfAttachments = $typeOfAttachments" + "\n" +
                 "id = $id" + "\n" +
                 "ownerId = $ownerId" + "\n" +
                 "title = $title" + "\n" +

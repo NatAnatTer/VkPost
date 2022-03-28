@@ -1,12 +1,12 @@
 package ru.netology.attachments
 
-class LinkAttachment(
+data class LinkAttachment(
     val url: String, // URL ссылки.
     val title: String,  // Заголовок ссылки.
     val caption: String?, // Подпись ссылки (если имеется).
     val description: String,  // Описание ссылки.
-    val photo: PhotoAttachment, // Изображение превью, объект фотографии (если имеется).
-    val product: Product,  // Информация о продукте (если имеется). Поле возвращается для ссылок на магазины, например, AliExpress. Объект с единственным полем price (object), которое описано на отдельной странице.
+    val photo: PhotoAttachment?, // Изображение превью, объект фотографии (если имеется).
+    val product: Product?,  // Информация о продукте (если имеется). Поле возвращается для ссылок на магазины, например, AliExpress. Объект с единственным полем price (object), которое описано на отдельной странице.
     val button: Button?, // Информация о кнопке для перехода (если имеется).
     val previewPage: String,// Идентификатор вики-страницы с контентом для предпросмотра содержимого страницы. Возвращается в формате "owner_id_page_id".
     val previewUrl: String // URL страницы с контентом для предпросмотра содержимого страницы.
@@ -14,15 +14,28 @@ class LinkAttachment(
     override val typeOfAttachments: String
         get() = "Link"
 
+    override fun toString(): String {
+        return ("typeOfAttachment = $typeOfAttachments" + "\n" +
+                "url = $url" + "\n" +
+                "title = $title" + "\n" +
+                "caption = $caption" + "\n" +
+                "description = $description" + "\n" +
+                "photo = $photo" + "\n" +
+                "product = $product" + "\n" +
+                "button = $button" + "\n" +
+                "previewPage = $previewPage" + "\n" +
+                "previewUrl = $previewUrl" + "\n"
+                )
+    }
     // Объект, описывающий прикреплённую ссылку в сообщении, комментарии или записи на стене, содержит следующие поля:
 
 
-    class Button(
+    data class Button(
         val title: String, // Название кнопки.
         val action: Actions
     )  // Действие для кнопки. )
 
-    class Actions(
+    data class Actions(
         val type: String
     ) {
 // тип действия. Возможные значения:
@@ -30,15 +43,15 @@ class LinkAttachment(
 // url (string) — URL для перехода.
     }
 
-    class Product(val price: Price)
+    data class Product(val price: Price)
 
-    class Price(
+    data class Price(
         val amount: Int, //Целочисленное значение цены, умноженное на 100.
         val currency: Currency,      //Объект currency, описывающий информацию о валюте,) {
         val text: String
     ) // Строка с локализованной ценой и валютой.
 
-    class Currency(
+    data class Currency(
         val id: Int, //идентификатор валюты.
         val name: String
     ) //буквенное обозначение валюты.
