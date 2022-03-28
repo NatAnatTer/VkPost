@@ -199,9 +199,9 @@ fun main() {
 
     val copyHistory = arrayOf(post2, post3)
     obj.addCopyHistory(post1, copyHistory)
-    
+
     obj.addAttachment(attachment, post1)
-    // obj.update(post1, post4)
+    obj.update(post1, post4)
     obj.printPost()
 
 
