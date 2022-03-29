@@ -4,10 +4,16 @@ import ru.netology.data.Post
 
 internal object WallService {
     private var posts = emptyArray<Post>()
+
+  //  var reposts = emptyArray<Post?>()
+
     private var uId = emptyArray<UInt>()
 
+//    internal fun getRepost(): Array<Post?> {
+//        return reposts
+//    }
+
     internal fun add(post: Post): Post {
-        // post.id = setId()
         posts += post
         return posts.last()
     }
