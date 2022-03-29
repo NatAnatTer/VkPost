@@ -1,13 +1,15 @@
 package ru.netology.service
 
+import ru.netology.attachments.Attachments
 import ru.netology.data.Post
+
 
 internal object WallService {
     private var posts = emptyArray<Post>()
+
     private var uId = emptyArray<UInt>()
 
     internal fun add(post: Post): Post {
-        // post.id = setId()
         posts += post
         return posts.last()
     }
@@ -21,7 +23,7 @@ internal object WallService {
     }
 
     fun setId(): UInt {
-        var maxRate = uId.maxOrNull()
+        var maxRate: UInt? = uId.maxOrNull()
 
         if (maxRate == null) {
             maxRate = 1U
@@ -29,8 +31,12 @@ internal object WallService {
             maxRate += 1U
         }
         uId += maxRate
-        return maxRate
+
+        return maxRate.toUInt()
+
+
     }
+
 
     internal fun update(updatingPost: Post, newPost: Post): Boolean {
         for ((index, changeablePost) in posts.withIndex()) {
@@ -55,9 +61,10 @@ internal object WallService {
                     markedAsAds = newPost.markedAsAds,
                     isFavorite = newPost.isFavorite,
                     donut = newPost.donut,
-                    postponedId = newPost.postponedId
+                    postponedId = newPost.postponedId,
+                    geo = newPost.geo
                 )
-
+                println("true")
                 return true
             }
         }
@@ -66,9 +73,17 @@ internal object WallService {
         return false
     }
 
+    internal fun addCopyHistory(repost: Post, post: Array<Post>): Array<Post>? {
+        repost.copyHistory = repost.copyHistory?.plus(post) ?: post
+        return repost.copyHistory
+    }
+
+    internal fun addAttachment(attachment: Array<Attachments>, post: Post): Array<Attachments>? {
+        post.attachments = post.attachments?.plus(attachment)?: attachment
+        return post.attachments
+    }
 
 }
-
 
 
 
