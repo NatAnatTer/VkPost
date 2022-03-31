@@ -82,7 +82,7 @@ fun main() {
         replyOwnerId = 0,
         replyPostId = 0,
         friendsOnly = false,
-        comments = Comment(1, true, true, true, true),
+        comments = CommentProperty(1, true, true, true, true),
         copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
         likes = Like(1000, true, true, true),
         repost = Repost(100_000_000, true),
@@ -112,7 +112,7 @@ fun main() {
         0,
         0,
         true,
-        Comment(1, true, true, true, true),
+        CommentProperty(1, true, true, true, true),
         Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
         Like(1000, true, true, true),
         Repost(100_000_000, true),
@@ -141,7 +141,7 @@ fun main() {
         0,
         0,
         true,
-        Comment(1, true, true, true, true),
+        CommentProperty(1, true, true, true, true),
         Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
         Like(1000, true, true, true),
         Repost(100_000_000, true),
@@ -170,7 +170,7 @@ fun main() {
         0,
         0,
         true,
-        Comment(1, true, true, true, true),
+        CommentProperty(1, true, true, true, true),
         Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
         Like(1000, true, true, true),
         Repost(100_000_000, true),
@@ -194,15 +194,29 @@ fun main() {
     obj.add(post1)
     obj.add(post2)
     obj.add(post3)
-
+    obj.add(post4)
     obj.printPost()
 
-    val copyHistory = arrayOf(post2, post3)
-    obj.addCopyHistory(post1, copyHistory)
+    // val copyHistory = arrayOf(post2, post3)
+    // obj.addCopyHistory(post1, copyHistory)
 
-    obj.addAttachment(attachment, post1)
-    obj.update(post1, post4)
-    obj.printPost()
+    // obj.addAttachment(attachment, post1)
+    //  obj.update(post1, post4)
+    //  obj.printPost()
 
-
+    val comment1 = Comment(
+        1,
+        2,
+        123123,
+        "COMMENT FIRST",
+        Donut(false, null, PlaseHolder("plaseholder"), true, "Some information"),
+        null,
+        null,
+        null,
+        null,
+        Thread(0, null, true, true, true),
+        1,
+        10U
+    )
+    obj.createComment(comment1)
 }

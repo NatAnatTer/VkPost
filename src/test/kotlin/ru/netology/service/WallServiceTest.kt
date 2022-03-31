@@ -7,9 +7,11 @@ import ru.netology.data.*
 import ru.netology.service.WallService.add
 import ru.netology.service.WallService.addAttachment
 import ru.netology.service.WallService.addCopyHistory
+import ru.netology.service.WallService.createComment
 import ru.netology.service.WallService.update
 
 class WallServiceTest {
+
 
     @Test
     fun addVkPost() {
@@ -23,7 +25,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -62,7 +64,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -91,7 +93,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -130,7 +132,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -159,7 +161,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -198,7 +200,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -227,7 +229,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -256,7 +258,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -295,7 +297,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -324,7 +326,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -356,7 +358,7 @@ class WallServiceTest {
             0,
             0,
             true,
-            Comment(1, true, true, true, true),
+            CommentProperty(1, true, true, true, true),
             Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             Like(1000, true, true, true),
             Repost(100_000_000, true),
@@ -460,7 +462,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -500,7 +502,8 @@ class WallServiceTest {
                 arrayOf(Sizes("http://my_album", 123, 234, "photo")),
                 123,
                 234
-        ))
+            )
+        )
         val attachment: Array<Attachments> = arrayOf(
             PhotoAttachment(
                 1,
@@ -573,7 +576,7 @@ class WallServiceTest {
             replyOwnerId = 0,
             replyPostId = 0,
             friendsOnly = false,
-            comments = Comment(1, true, true, true, true),
+            comments = CommentProperty(1, true, true, true, true),
             copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
             likes = Like(1000, true, true, true),
             repost = Repost(100_000_000, true),
@@ -594,8 +597,143 @@ class WallServiceTest {
             postponedId = 1232
         )
         addAttachment(attachmentNew, post1)
-        val attachmentResult: Array<Attachments> =attachment + attachmentNew
+        val attachmentResult: Array<Attachments> = attachment + attachmentNew
         val result = post1.attachments
         assertArrayEquals(attachmentResult, result)
     }
+
+    @Test
+    fun createCommentPostExist() {
+        val typeOfPost = TypeOfPost.POST
+        val post1 = Post(
+            ownerId = 1,
+            fromId = 2,
+            createdBy = 0,
+            date = System.currentTimeMillis(),
+            text = "This is my FIRST post. I hope, I can do it better than I think. And so on, bla bla bla.",
+            replyOwnerId = 0,
+            replyPostId = 0,
+            friendsOnly = false,
+            comments = CommentProperty(1, true, true, true, true),
+            copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
+            likes = Like(1000, true, true, true),
+            repost = Repost(100_000_000, true),
+            views = View(1_000_000_000),
+            postType = typeOfPost,
+            postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
+            geo = null,
+            copyHistory = null,
+            attachments = null,
+            signerId = 0,
+            canPin = true,
+            canDelete = true,
+            canEdit = true,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = true,
+            donut = Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
+            postponedId = 1232
+        )
+        val post2 = Post(
+            1,
+            2,
+            0,
+            System.currentTimeMillis(),
+            "This is my SECOND post. I hope, I can do it better than I think. And so on, bla bla bla.",
+            0,
+            0,
+            true,
+            CommentProperty(1, true, true, true, true),
+            Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
+            Like(1000, true, true, true),
+            Repost(100_000_000, true),
+            View(1_000_000_000),
+            typeOfPost,
+            Source("vk", "android", "profile_activity", "https://source1234source"),
+            null,
+            null,
+            null,
+            0,
+            true,
+            true,
+            true,
+            false,
+            false,
+            true,
+            Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
+            1232
+        )
+
+        val comment1 = Comment(
+            1,
+            2,
+            123123,
+            "COMMENT FIRST",
+            Donut(false, null, PlaseHolder("plaseholder"), true, "Some information"),
+            null,
+            null,
+            null,
+            null,
+            Thread(0, null, true, true, true),
+            1,
+            post1.getId()
+        )
+        add(post1)
+        add(post2)
+        createComment(comment1)
+    }
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentPostException() {
+        val typeOfPost = TypeOfPost.POST
+        val post1 = Post(
+            ownerId = 1,
+            fromId = 2,
+            createdBy = 0,
+            date = System.currentTimeMillis(),
+            text = "This is my FIRST post. I hope, I can do it better than I think. And so on, bla bla bla.",
+            replyOwnerId = 0,
+            replyPostId = 0,
+            friendsOnly = false,
+            comments = CommentProperty(1, true, true, true, true),
+            copyright = Copyright(1, "https://copyrightcopy.com", "Copyright", "typeOfCopy"),
+            likes = Like(1000, true, true, true),
+            repost = Repost(100_000_000, true),
+            views = View(1_000_000_000),
+            postType = typeOfPost,
+            postSource = Source("vk", "android", "profile_activity", "https://source1234source"),
+            geo = null,
+            copyHistory = null,
+            attachments = null,
+            signerId = 0,
+            canPin = true,
+            canDelete = true,
+            canEdit = true,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = true,
+            donut = Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
+            postponedId = 1232
+        )
+
+        val comment1 = Comment(
+            1,
+            2,
+            123123,
+            "COMMENT FIRST",
+            Donut(false, null, PlaseHolder("plaseholder"), true, "Some information"),
+            null,
+            null,
+            null,
+            null,
+            Thread(0, null, true, true, true),
+            1,
+            5U
+        )
+        add(post1)
+        createComment(comment1)
+    }
+
+
+
+
 }
