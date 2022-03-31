@@ -1,7 +1,6 @@
 package ru.netology.data
 
 import ru.netology.attachments.Attachments
-import ru.netology.attachments.PhotoAttachment
 import ru.netology.service.WallService
 
 data class Post(
@@ -13,7 +12,7 @@ data class Post(
     val replyOwnerId: Int, //Идентификатор владельца записи, в ответ на которую была оставлена текущая.
     val replyPostId: Int, //Идентификатор записи, в ответ на которую была оставлена текущая.
     val friendsOnly: Boolean = false, //true, если запись была создана с опцией «Только для друзей»
-    val comments: Comment, //Информация о комментариях к записи
+    val comments: CommentProperty, //Информация о комментариях к записи
     val copyright: Copyright, //Источник материала,
     val likes: Like, //Информация о лайках к записи
     val repost: Repost, //Информация о репостах записи («Рассказать друзьям»)

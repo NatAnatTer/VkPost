@@ -1,11 +1,25 @@
 package ru.netology.service
 
 import ru.netology.attachments.Attachments
+import ru.netology.data.Comment
 import ru.netology.data.Post
 
 
 internal object WallService {
     private var posts = emptyArray<Post>()
+
+    private var comments = emptyArray<Comment>()
+
+    fun createComment(comment: Comment) {
+        for (post in posts) {
+            if (comment.postId == post.getId()) {
+                comments += comment
+                return
+            }
+        };throw PostNotFoundException("post not found with id = ${comment.postId}")
+
+    }
+
 
     private var uId = emptyArray<UInt>()
 
@@ -79,7 +93,7 @@ internal object WallService {
     }
 
     internal fun addAttachment(attachment: Array<Attachments>, post: Post): Array<Attachments>? {
-        post.attachments = post.attachments?.plus(attachment)?: attachment
+        post.attachments = post.attachments?.plus(attachment) ?: attachment
         return post.attachments
     }
 
