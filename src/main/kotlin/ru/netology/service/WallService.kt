@@ -10,6 +10,8 @@ internal object WallService {
 
     private var comments = emptyArray<Comment>()
 
+
+    @Throws(PostNotFoundException::class)
     fun createComment(comment: Comment) {
         for (post in posts) {
             if (comment.postId == post.getId()) {
@@ -23,12 +25,12 @@ internal object WallService {
 
     private var uId = emptyArray<UInt>()
 
-    internal fun add(post: Post): Post {
+    fun add(post: Post): Post {
         posts += post
         return posts.last()
     }
 
-    internal fun printPost() {
+    fun printPost() {
         for (post in posts) {
             println("----------------------------------------")
             println("ID POST: ${post.getId()}")

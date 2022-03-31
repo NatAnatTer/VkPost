@@ -216,7 +216,7 @@ fun main() {
         null,
         Thread(0, null, true, true, true),
         1,
-        4U
+        10U
     )
     obj.createComment(comment1)
 }
