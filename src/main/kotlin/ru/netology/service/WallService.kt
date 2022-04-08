@@ -2,67 +2,37 @@ package ru.netology.service
 
 import ru.netology.data.Post
 
-internal object WallService {
-    private var posts = emptyArray<Post>()
-    private var uId = emptyArray<UInt>()
+object WallService {
+    var posts = emptyArray<Post>()
 
     internal fun add(post: Post): Post {
-        // post.id = setId()
-        posts += post
+        val newId = (posts.lastOrNull()?.id ?: 0U) + 1U
+        val postAdding = post.copy(
+            id = newId
+        )
+        posts += postAdding
         return posts.last()
     }
 
-    internal fun printPost() {
-        for (post in posts) {
-            println("----------------------------------------")
-            println("ID POST: ${post.getId()}")
-            println(post)
-        }
-    }
+//    fun printPost() {
+//        for (post in posts) {
+//            println("----------------------------------------")
+//            println(post)
+//        }
+//    }
 
-    fun setId(): UInt {
-        var maxRate = uId.maxOrNull()
 
-        if (maxRate == null) {
-            maxRate = 1U
-        } else {
-            maxRate += 1U
-        }
-        uId += maxRate
-        return maxRate
-    }
-
-    internal fun update(updatingPost: Post, newPost: Post): Boolean {
-        for ((index, changeablePost) in posts.withIndex()) {
-            if (changeablePost.getId() == updatingPost.getId()) {
-                posts[index] = posts[index].copy(
-                    fromId = newPost.fromId,
-                    createdBy = newPost.createdBy,
-                    text = newPost.text,
-                    replyOwnerId = newPost.replyOwnerId,
-                    replyPostId = newPost.replyPostId,
-                    friendsOnly = newPost.friendsOnly,
-                    comments = newPost.comments,
-                    copyright = newPost.copyright,
-                    likes = newPost.likes,
-                    repost = newPost.repost,
-                    views = newPost.views,
-                    postType = newPost.postType,
-                    canPin = newPost.canPin,
-                    canDelete = newPost.canDelete,
-                    canEdit = newPost.canEdit,
-                    isPinned = newPost.isPinned,
-                    markedAsAds = newPost.markedAsAds,
-                    isFavorite = newPost.isFavorite,
-                    donut = newPost.donut,
-                    postponedId = newPost.postponedId
+    fun update(post: Post): Boolean {
+        for ((index) in posts.withIndex()) {
+            if (posts[index].id == post.id) {
+                posts[index] = post.copy(
+                    ownerId = posts[index].ownerId,
+                    date = posts[index].date
                 )
-
                 return true
             }
-        }
 
-        println("false")
+        }
         return false
     }
 

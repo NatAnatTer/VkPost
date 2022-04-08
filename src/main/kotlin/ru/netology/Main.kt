@@ -9,7 +9,8 @@ fun main() {
 
 
     val post1 = Post(
-                ownerId = 1,
+        id = 1U,
+        ownerId = 1,
         fromId = 2,
         createdBy = 0,
         date = System.currentTimeMillis(),
@@ -34,6 +35,7 @@ fun main() {
         postponedId = 1232
     )
     val post2 = Post(
+        1U,
         1,
         2,
         0,
@@ -59,6 +61,7 @@ fun main() {
         1232
     )
     val post3 = Post(
+        1U,
         1,
         2,
         0,
@@ -84,6 +87,7 @@ fun main() {
         1232
     )
     val post4 = Post(
+        1U,
         5,
         2,
         0,
@@ -112,9 +116,9 @@ fun main() {
     obj.add(post1)
     obj.add(post2)
     obj.add(post3)
-    obj.printPost()
+    //obj.printPost()
 
-    obj.update(post2, post4)
+    obj.update(post4)
 
-    obj.printPost()
+    //obj.printPost()
 }

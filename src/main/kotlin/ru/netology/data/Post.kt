@@ -3,6 +3,7 @@ package ru.netology.data
 import ru.netology.service.WallService
 
 data class Post(
+    val id: UInt, //Идентификатор записи
     val ownerId: Int, //Идентификатор владельца стены, на которой размещена запись
     val fromId: Int, //Идентификатор автора записи (от чьего имени опубликована запись)
     val createdBy: Int, //Идентификатор администратора, который опубликовал запись (возвращается только для сообществ при запросе с ключом доступа администратора). Возвращается в записях, опубликованных менее 24 часов назад
@@ -26,15 +27,7 @@ data class Post(
     val isFavorite: Boolean, //true, если объект добавлен в закладки у текущего пользователя.
     val donut: Donut, //Информация о записи VK Donut
     val postponedId: Int //Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере.
-) {
-
-    private val id: UInt = WallService.setId() //Идентификатор записи
-
-
-    fun getId(): UInt {
-        return id
-    }
-}
+)
 
 
 

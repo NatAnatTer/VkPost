@@ -1,11 +1,10 @@
 package ru.netology.service
-import ru.netology.data.*
-
-import org.junit.Test
 
 import org.junit.Assert.*
+import org.junit.Test
 import ru.netology.data.*
 import ru.netology.service.WallService.add
+import ru.netology.service.WallService.posts
 import ru.netology.service.WallService.update
 
 class WallServiceTest {
@@ -14,6 +13,7 @@ class WallServiceTest {
     fun `add$VkPost`() {
         val typeOfPost = TypeOfPost.POST
         val post1 = Post(
+            id = 1U,
             ownerId = 1,
             fromId = 2,
             createdBy = 0,
@@ -38,16 +38,18 @@ class WallServiceTest {
             donut = Donut(true, 48, PlaseHolder("Buy premium"), false, "duration"),
             postponedId = 1232
         )
+
         add(post1)
-val result = post1.getId()
-        assertNotEquals(0U, result)
-        //assertNotNull(result)
+        posts.withIndex()
+        val result = posts[0].id
+        assertEquals(1U, result)
     }
 
     @Test
     fun `update$VkPost`() {
         val typeOfPost = TypeOfPost.POST
         val post1 = Post(
+            id = 1U,
             ownerId = 1,
             fromId = 2,
             createdBy = 0,
@@ -73,6 +75,7 @@ val result = post1.getId()
             postponedId = 1232
         )
         val post2 = Post(
+            id = 1U,
             1,
             2,
             0,
@@ -98,15 +101,15 @@ val result = post1.getId()
             1232
         )
         add(post1)
-
-
-        val result = update(post1, post2)
-        assertEquals(true, result)
+        val result = update(post2)
+        assertTrue(result)
     }
+
     @Test
     fun `updateFalse$VkPost`() {
         val typeOfPost = TypeOfPost.POST
         val post1 = Post(
+            id = 1U,
             ownerId = 1,
             fromId = 2,
             createdBy = 0,
@@ -132,6 +135,7 @@ val result = post1.getId()
             postponedId = 1232
         )
         val post2 = Post(
+            id = 2U,
             1,
             2,
             0,
@@ -157,9 +161,7 @@ val result = post1.getId()
             1232
         )
         add(post1)
-
-
-        val result = update(post2, post1)
-        assertEquals(false, result)
+        val result = update(post2)
+        assertFalse(result)
     }
 }
