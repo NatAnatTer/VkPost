@@ -12,64 +12,74 @@ fun main() {
 
     val attachment: Array<Attachments> = arrayOf(
         PhotoAttachment(
-            1,
-            1,
-            5,
-            10,
-            "Myfirst symphony",
-            123213,
-            arrayOf(Sizes("http://my_album", 123, 234, "photo")),
-            123,
-            234
+            "Photo", Photo(
+                1,
+                1,
+                5,
+                10,
+                "Myfirst symphony",
+                123213,
+                arrayOf(Sizes("http://my_album", 123, 234, "photo")),
+                123,
+                234
+            )
         ),
         AudioAttachment(
-            1,
-            3,
-            "First artist",
-            "First song",
-            14678,
-            "http://first_song",
-            null,
-            null,
-            30,
-            2343424,
-            true,
-            true
+            "Audio", Audio(
+                1,
+                3,
+                "First artist",
+                "First song",
+                14678,
+                "http://first_song",
+                null,
+                null,
+                30,
+                2343424,
+                true,
+                true
+            )
         ),
         FileAttachment(
-            1,
-            2,
-            "Title 1 file",
-            256,
-            "pdf",
-            "http://file_store.ru",
-            72634628,
-            1,
-            PhotoSize(arrayOf(Sizes("https://rhoto_preview", 123, 243, "some type")))
+            "File", File(
+                1,
+                2,
+                "Title 1 file",
+                256,
+                "pdf",
+                "http://file_store.ru",
+                72634628,
+                1,
+                PhotoSize(arrayOf(Sizes("https://rhoto_preview", 123, 243, "some type")))
+            )
         ),
         LinkAttachment(
-            "http://link_first_link",
-            "this link is link",
-            null,
-            "description this link",
-            null,
-            LinkAttachment.Product(LinkAttachment.Price(10, LinkAttachment.Currency(1232, "Ru"), "something")),
-            LinkAttachment.Button("thisButton", LinkAttachment.Actions("radio_button")),
-            "owner_id_page_id",
-            "http://preview.ru"
+            "Link", Link(
+                "http://link_first_link",
+                "this link is link",
+                null,
+                "description this link",
+                null,
+                Link.Product(Link.Price(10, Link.Currency(1232, "Ru"), "something")),
+                Link.Button("thisButton", Link.Actions("radio_button")),
+                "owner_id_page_id",
+                "http://preview.ru"
+            )
         ),
         NoteAttachment(
-            45,
-            32,
-            "thisNote",
-            "there is text of note",
-            2342342,
-            5,
-            2,
-            "http://firstNote.ru",
-            "property of privacy",
-            true,
-            "#linkOn WiKi"
+            "Note", Note(
+                45,
+                32,
+                "thisNote",
+                "there is text of note",
+                2342342,
+                5,
+                2,
+                "http://firstNote.ru",
+                "property of privacy",
+                true,
+                "#linkOn WiKi"
+            )
         )
     )
 
